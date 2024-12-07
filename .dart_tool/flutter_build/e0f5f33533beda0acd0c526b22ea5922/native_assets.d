@@ -1,1 +1,0 @@
- C:\\code\\flutter\\mwi_chest_sim\\.dart_tool\\flutter_build\\e0f5f33533beda0acd0c526b22ea5922\\native_assets.yaml: 

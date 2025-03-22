@@ -163,7 +163,7 @@ class HomeViewModel extends ChangeNotifier {
       if (areDropsCalculatedFromAsk && askPrice != -1) {
         totalRevenue += askPrice * itemMapEntry.value.quantity;
       } else if (!areDropsCalculatedFromAsk && bidPrice != -1) {
-        totalExpense += totalRevenue += bidPrice * itemMapEntry.value.quantity;
+        totalRevenue += bidPrice * itemMapEntry.value.quantity;
       } else {
         totalRevenue += max(askPrice, bidPrice) * itemMapEntry.value.quantity;
       }
@@ -260,6 +260,28 @@ class HomeViewModel extends ChangeNotifier {
     }
     marketData["Large Treasure Chest"] =
         Price(ask: askTotalPrice, bid: bidTotalPrice);
+  }
+
+  void calculateEditedEconomics() {
+    totalRevenue = 0;
+    for (var itemMapEntry in chestDrops.entries) {
+      double askPrice = itemMapEntry.value.prices!.ask;
+      double bidPrice = itemMapEntry.value.prices!.bid;
+
+      //so the logic is, if user wants the revenue generated from ask prices
+      //but if there's no one selling in ask's, the bid price is used for calculation,
+      //same thing happens with bid calculation(3rd option)
+      if (areDropsCalculatedFromAsk && askPrice != -1) {
+        totalRevenue += askPrice * itemMapEntry.value.quantity;
+      } else if (!areDropsCalculatedFromAsk && bidPrice != -1) {
+        totalRevenue += bidPrice * itemMapEntry.value.quantity;
+      } else {
+        totalRevenue += max(askPrice, bidPrice) * itemMapEntry.value.quantity;
+      }
+    }
+    calculateTotalExpenes();
+    calculateTotalProfitAndHourlyProfit();
+    notifyListeners();
   }
 
   //this thing formats 12345,123 to

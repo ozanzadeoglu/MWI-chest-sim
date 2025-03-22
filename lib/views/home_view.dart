@@ -284,7 +284,7 @@ class _ExpensesToggleButtons extends State<ExpensesToggleButtons> {
             onPressed: (index) {
               changeSelectedButton(index);
               changeExpenseType(index);
-              viewModel.calculateAllEconomics();
+              viewModel.calculateEditedEconomics();
             },
             isSelected: expensesIsSelected,
             children: [
@@ -367,7 +367,7 @@ class _DropsToggleButtons extends State<DropsToggleButtons> {
             onPressed: (index) {
               changeSelectedButton(index);
               changeExpenseType(index);
-              viewModel.calculateAllEconomics();
+              viewModel.calculateEditedEconomics();
             },
             isSelected: dropsIsSelected,
             children: [
@@ -463,11 +463,11 @@ class ClearTimeWidget extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              if(textFieldController.text.isNotEmpty){
-              viewModel.updateClearTimeInMinutes(
-                  int.parse(textFieldController.text));
-              viewModel.calculateAllEconomics();
-              } 
+              if (textFieldController.text.isNotEmpty) {
+                viewModel.updateClearTimeInMinutes(
+                    int.parse(textFieldController.text));
+                viewModel.calculateEditedEconomics();
+              }
             },
             child: const Text("SET"),
           ),
@@ -571,7 +571,8 @@ class ChestQuantityButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        if (!isButtonDisabled && homeViewModel.chestQuantityEditingController.text.isNotEmpty) {
+        if (!isButtonDisabled &&
+            homeViewModel.chestQuantityEditingController.text.isNotEmpty) {
           homeViewModel.openChest(
               int.parse(homeViewModel.chestQuantityEditingController.text));
         }
@@ -589,7 +590,6 @@ class ItemPricesTable extends StatelessWidget {
     final viewModel = context.read<HomeViewModel>();
     final chestDrops = context.select<HomeViewModel, Map<String, Item>>(
         (viewModel) => viewModel.chestDrops);
-
     return SingleChildScrollView(
       child: FittedBox(
         child: DataTable(
@@ -609,10 +609,48 @@ class ItemPricesTable extends StatelessWidget {
                     DataCell(Text(e.key.toString())),
                     DataCell(Text(
                         viewModel.formatInteger(e.value.quantity.toString()))),
-                    DataCell(Text(viewModel
-                        .formatInteger(e.value.prices!.ask.toString()))),
-                    DataCell(Text(viewModel
-                        .formatInteger(e.value.prices!.bid.toString()))),
+                    DataCell(
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            enabledBorder: InputBorder.none),
+                        key: Key((e.value.prices!.ask.toString())),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        keyboardType: TextInputType.number,
+                        initialValue: viewModel
+                            .formatInteger(e.value.prices!.ask.toString()),
+                        onFieldSubmitted: (value) {
+                          chestDrops[e.key]!.prices!.ask = double.parse(value);
+                          viewModel.calculateEditedEconomics();
+                        },
+                        onChanged: (value) {
+                          chestDrops[e.key]!.prices!.ask = double.parse(value);
+                          viewModel.calculateEditedEconomics();
+                        },
+                      ),
+                    ),
+                    DataCell(
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            enabledBorder: InputBorder.none),
+                        key: Key((e.value.prices!.bid.toString())),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        keyboardType: TextInputType.number,
+                        initialValue: viewModel
+                            .formatInteger(e.value.prices!.bid.toString()),
+                        onFieldSubmitted: (value) {
+                          chestDrops[e.key]!.prices!.bid = double.parse(value);
+                          viewModel.calculateEditedEconomics();
+                        },
+                        onChanged: (value) {
+                          chestDrops[e.key]!.prices!.bid = double.parse(value);
+                          viewModel.calculateEditedEconomics();
+                        },
+                      ),
+                    ),
                   ],
                 ),
               )
@@ -642,6 +680,9 @@ class EconomicsTable extends StatelessWidget {
     final totalProfitPerHour = context.select<HomeViewModel, double>(
         (viewModel) => viewModel.totalProfitPerHour);
 
+    final chestQuantity = context
+        .select<HomeViewModel, int>((viewModel) => viewModel.chestQuantity);
+
     return Table(
       border: TableBorder.all(color: Colors.white),
       children: [
@@ -658,8 +699,17 @@ class EconomicsTable extends StatelessWidget {
           Text(viewModel.formatInteger(totalProfit.toString())),
         ]),
         TableRow(children: [
+          const Text("Profit Per Day"),
+          Text(viewModel.formatInteger((totalProfitPerHour * 24).toString())),
+        ]),
+        TableRow(children: [
           const Text("Total Profit Per Hour"),
           Text(viewModel.formatDouble(totalProfitPerHour.toString())),
+        ]),
+        TableRow(children: [
+          const Text("Profit Per Chest"),
+          Text(
+              viewModel.formatDouble((totalProfit / chestQuantity).toString())),
         ]),
       ],
     );

@@ -1,6 +1,6 @@
 class Price {
-  final double ask;
-  final double bid;
+  double ask;
+  double bid;
 
   Price({required this.ask, required this.bid});
 

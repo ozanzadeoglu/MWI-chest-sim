@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'MWI Chest Opening Simulator',
+        title: 'Aerokth\'s Chest Simulator',
         theme: ThemeData(
           colorScheme: const ColorScheme.dark(),
           useMaterial3: true,

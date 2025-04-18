@@ -17,7 +17,7 @@ class HomeViewModel extends ChangeNotifier {
   bool isSimulationOnProgress = false;
   double currentSimulationProgress = 0;
 
-  String currentChest = "Enchanted Chest";
+  String currentChest = "Pirate Chest";
   final DropTables dropTables = DropTables();
   final DungeonShop dungeonShop = DungeonShop();
   var chestDrops = <String, Item>{};
@@ -86,6 +86,9 @@ class HomeViewModel extends ChangeNotifier {
         break;
       case "Enchanted Chest":
         dropTable = dropTables.enchantedChestDropTable;
+        break;
+      case "Pirate Chest":
+        dropTable = dropTables.pirateChestDropTable;
         break;
     }
 
@@ -190,6 +193,9 @@ class HomeViewModel extends ChangeNotifier {
         entryKeyName = "Enchanted Entry Key";
         chestKeyName = "Enchanted Chest Key";
         break;
+      case "Pirate Chest":
+        entryKeyName = "Pirate Entry Key";
+        chestKeyName = "Pirate Chest Key";
     }
 
     if (areExpensesCalculatedFromAsk) {
@@ -221,7 +227,8 @@ class HomeViewModel extends ChangeNotifier {
     final Map<String, List<ShopItem>> tokensAndShops = {
       "Chimerical Token": dungeonShop.chimericalItems,
       "Sinister Token": dungeonShop.sinisterItems,
-      "Enchanted Token": dungeonShop.enchantedItems
+      "Enchanted Token": dungeonShop.enchantedItems,
+      "Pirate Token": dungeonShop.pirateItems
     };
     for (var token in tokensAndShops.keys) {
       askTokenPrice = 0;

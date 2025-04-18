@@ -82,6 +82,38 @@ final List<LootItem> chimericalChestDropTable = [
   LootItem(name: 'Griffin Bulwark', probability: 0.05, minQuantity: 1, maxQuantity: 1),
 ];
 
+final List<LootItem> pirateChestDropTable = [
+  LootItem(name: 'Pirate Essence', probability: 100.0, minQuantity: 400, maxQuantity: 800),
+  LootItem(name: 'Pirate Essence', probability: 5.0, minQuantity: 2000, maxQuantity: 4000),
+  LootItem(name: 'Pirate Token', probability: 100.0, minQuantity: 250, maxQuantity: 500),
+  LootItem(name: 'Pirate Token', probability: 5.0, minQuantity: 1500, maxQuantity: 3000),
+  LootItem(name: 'Large Treasure Chest', probability: 30.0, minQuantity: 1, maxQuantity: 8),
+  LootItem(name: 'Moonstone', probability: 50.0, minQuantity: 5, maxQuantity: 20),
+  LootItem(name: 'Sunstone', probability: 50.0, minQuantity: 1, maxQuantity:6),
+  LootItem(name: 'Shield Bash', probability: 50.0, minQuantity: 1, maxQuantity: 2),
+  LootItem(name: 'Fracturing Impact', probability: 50.0, minQuantity: 1, maxQuantity: 2),
+  LootItem(name: 'Life Drain', probability: 50.0, minQuantity: 1, maxQuantity: 2),
+  LootItem(name: 'Marksman Brooch', probability: 3.0, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Corsair Crest', probability: 3.0, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Damaged Anchor', probability: 3.0, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Maelstrom Plating', probability: 3.0, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Kraken Leather', probability: 3.0, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Kraken Fang', probability: 3.0, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Pirate Chest Key', probability: 2.0, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Marksman Bracers', probability: 0.2, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Corsair Helmet', probability: 0.2, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Anchorbound Plate Body', probability: 0.04, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Anchorbound Plate Legs', probability: 0.04, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Maelstrom Plate Body', probability: 0.04, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Maelstrom Plate Legs', probability: 0.04, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Kraken Tunic', probability: 0.04, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Kraken Chaps', probability: 0.04, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Rippling Trident', probability: 0.03, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Blooming Trident', probability: 0.03, minQuantity: 1, maxQuantity: 1),
+  LootItem(name: 'Blazing Trident', probability: 0.03, minQuantity: 1, maxQuantity: 1),
+];
+
+
 List<LootItem> largeTreasureChest = [
   LootItem(name: "Coin", probability: 100, minQuantity: 30000, maxQuantity: 60000),
   LootItem(name: "Coin", probability: 10.0, minQuantity: 150000, maxQuantity: 300000),

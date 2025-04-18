@@ -32,4 +32,13 @@ class DungeonShop {
     ShopItem(itemName: 'Sundering Jewel', priceByTokens: 3000, tokenType: 'Enchanted Token'),
   ];
 
+  final List<ShopItem> pirateItems = [
+    ShopItem(itemName: 'Pirate Essence', priceByTokens: 1, tokenType: 'Pirate Token'),
+    ShopItem(itemName: 'Marksman Brooch', priceByTokens: 2000, tokenType: 'Pirate Token'),    
+    ShopItem(itemName: 'Corsair Crest', priceByTokens: 2000, tokenType: 'Pirate Token'),    
+    ShopItem(itemName: 'Damaged Anchor', priceByTokens: 2000, tokenType: 'Pirate Token'),
+    ShopItem(itemName: 'Maelstrom Plating', priceByTokens: 2000, tokenType: 'Pirate Token'),
+    ShopItem(itemName: 'Kraken Leather', priceByTokens: 2000, tokenType: 'Pirate Token'),
+    ShopItem(itemName: 'Kraken Fang', priceByTokens: 3000, tokenType: 'Pirate Token'),
+  ];
 }

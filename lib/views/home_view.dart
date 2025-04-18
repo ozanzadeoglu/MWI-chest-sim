@@ -700,7 +700,7 @@ class EconomicsTable extends StatelessWidget {
         ]),
         TableRow(children: [
           const Text("Profit Per Day"),
-          Text(viewModel.formatInteger((totalProfitPerHour * 24).toString())),
+          Text(viewModel.formatDouble((totalProfitPerHour * 24).toString())),
         ]),
         TableRow(children: [
           const Text("Total Profit Per Hour"),
@@ -820,6 +820,20 @@ class ChestChoosingDialog extends StatelessWidget {
                         Navigator.of(context).pop();
                       },
                       child: const ItemBox(itemName: "Enchanted Chest"),
+                    ),
+                  ),
+                ),
+                const Spacer(),
+                Expanded(
+                  flex: 10,
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: GestureDetector(
+                      onTap: () {
+                        homeViewModel.changeCurrentChest("Pirate Chest");
+                        Navigator.of(context).pop();
+                      },
+                      child: const ItemBox(itemName: "Pirate Chest"),
                     ),
                   ),
                 ),

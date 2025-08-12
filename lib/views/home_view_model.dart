@@ -37,7 +37,7 @@ class HomeViewModel extends ChangeNotifier {
   double totalProfitPerHour = 0;
 
   TextEditingController get clearTimeController => _clearTimeController;
-  get marketData => _marketData;
+  Map<String, Price> get marketData => _marketData;
   TextEditingController get chestQuantityEditingController =>
       _chestQuantityEditingController;
 
@@ -157,8 +157,8 @@ class HomeViewModel extends ChangeNotifier {
     totalRevenue = 0;
 
     for (var itemMapEntry in chestDrops.entries) {
-      double askPrice = marketData[itemMapEntry.key].ask;
-      double bidPrice = marketData[itemMapEntry.key].bid;
+      double askPrice = marketData[itemMapEntry.key]!.ask;
+      double bidPrice = marketData[itemMapEntry.key]!.bid;
 
       //so the logic is, if user wants the revenue generated from ask prices
       //but if there's no one selling in ask's, the bid price is used for calculation,
@@ -200,11 +200,11 @@ class HomeViewModel extends ChangeNotifier {
 
     if (areExpensesCalculatedFromAsk) {
       totalExpense =
-          (marketData[entryKeyName].ask + marketData[chestKeyName].ask) *
+          (marketData[entryKeyName]!.ask + marketData[chestKeyName]!.ask) *
               chestQuantity;
     } else {
       totalExpense =
-          (marketData[entryKeyName].bid + marketData[chestKeyName].bid) *
+          (marketData[entryKeyName]!.bid + marketData[chestKeyName]!.bid) *
               chestQuantity;
     }
   }
@@ -235,9 +235,9 @@ class HomeViewModel extends ChangeNotifier {
       bidTokenPrice = 0;
       for (var item in tokensAndShops[token]!) {
         double askPrice =
-            ((marketData[item.itemName].ask / item.priceByTokens));
+            ((marketData[item.itemName]!.ask / item.priceByTokens));
         double bidPrice =
-            ((marketData[item.itemName].bid / item.priceByTokens));
+            ((marketData[item.itemName]!.bid / item.priceByTokens));
         if (askTokenPrice < askPrice) {
           askTokenPrice = askPrice.ceil().toDouble();
         }
@@ -259,11 +259,11 @@ class HomeViewModel extends ChangeNotifier {
       askTotalPrice += ((item.minQuantity + item.maxQuantity) / 2) *
           item.probability /
           100 *
-          (marketData[item.name].ask).abs();
+          (marketData[item.name]!.ask).abs();
       bidTotalPrice += ((item.minQuantity + item.maxQuantity) / 2) *
           item.probability /
           100 *
-          (marketData[item.name].bid).abs();
+          (marketData[item.name]!.bid).abs();
     }
     marketData["Large Treasure Chest"] =
         Price(ask: askTotalPrice, bid: bidTotalPrice);

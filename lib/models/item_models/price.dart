@@ -6,9 +6,10 @@ class Price {
 
   // Factory method to create an Item object from JSON
   factory Price.fromJson(Map<String, dynamic> json) {
+    final Map<String, dynamic>? prices = json['0'];
     return Price(
-      ask: json['ask'] ?? -1, // Handle missing or null values
-      bid: json['bid']  ?? -1,
+      ask: prices?['a'] ?? -1, // Handle missing or null values
+      bid: prices?['b']  ?? -1,
     );
   }
 }

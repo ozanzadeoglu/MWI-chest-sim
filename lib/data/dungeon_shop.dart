@@ -16,8 +16,8 @@ class DungeonShop {
   // List of items bought with Sinister Tokens
   final List<ShopItem> sinisterItems = [
     ShopItem(itemName: 'Sinister Essence', priceByTokens: 1, tokenType: 'Sinister Token'),
-    ShopItem(itemName: 'Acrobat\'s Ribbon', priceByTokens: 2000, tokenType: 'Sinister Token'),
-    ShopItem(itemName: 'Magician\'s Cloth', priceByTokens: 2000, tokenType: 'Sinister Token'),
+    ShopItem(itemName: 'Acrobats Ribbon', priceByTokens: 2000, tokenType: 'Sinister Token'),
+    ShopItem(itemName: 'Magicians Cloth', priceByTokens: 2000, tokenType: 'Sinister Token'),
     ShopItem(itemName: 'Chaotic Chain', priceByTokens: 3000, tokenType: 'Sinister Token'),
     ShopItem(itemName: 'Cursed Ball', priceByTokens: 3000, tokenType: 'Sinister Token'),
   ];
@@ -26,8 +26,8 @@ class DungeonShop {
   final List<ShopItem> enchantedItems = [
     ShopItem(itemName: 'Enchanted Essence', priceByTokens: 1, tokenType: 'Enchanted Token'),
     ShopItem(itemName: 'Royal Cloth', priceByTokens: 2000, tokenType: 'Enchanted Token'),    
-    ShopItem(itemName: 'Knight\'s Ingot', priceByTokens: 2000, tokenType: 'Enchanted Token'),
-    ShopItem(itemName: 'Bishop\'s Scroll', priceByTokens: 2000, tokenType: 'Enchanted Token'),
+    ShopItem(itemName: 'Knights Ingot', priceByTokens: 2000, tokenType: 'Enchanted Token'),
+    ShopItem(itemName: 'Bishops Scroll', priceByTokens: 2000, tokenType: 'Enchanted Token'),
     ShopItem(itemName: 'Regal Jewel', priceByTokens: 3000, tokenType: 'Enchanted Token'),
     ShopItem(itemName: 'Sundering Jewel', priceByTokens: 3000, tokenType: 'Enchanted Token'),
   ];

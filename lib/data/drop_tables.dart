@@ -31,8 +31,9 @@ class DropTables {
     LootItem(name:'Royal Nature Robe Bottoms', probability: 0.04, minQuantity: 1, maxQuantity: 1),
     LootItem(name:'Royal Fire Robe Top', probability: 0.04, minQuantity: 1, maxQuantity: 1),
     LootItem(name:'Royal Fire Robe Bottoms', probability: 0.04, minQuantity: 1, maxQuantity: 1),
-    LootItem(name:'Regal Sword', probability: 0.05, minQuantity: 1, maxQuantity: 1),
-    LootItem(name:'Sundering Crossbow', probability: 0.05, minQuantity: 1, maxQuantity: 1),
+    LootItem(name:'Furious Spear', probability: 0.03, minQuantity: 1, maxQuantity: 1),
+    LootItem(name:'Regal Sword', probability: 0.03, minQuantity: 1, maxQuantity: 1),
+    LootItem(name:'Sundering Crossbow', probability: 0.03, minQuantity: 1, maxQuantity: 1),
   ] ;
 
   final List<LootItem> sinisterChestDropTable = [
